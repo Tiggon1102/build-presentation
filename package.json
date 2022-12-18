@@ -1,0 +1,29 @@
+{
+  "name": "enter_name",
+  "version": "0.1.0",
+  "autor": "kiljimintaru",
+  "scripts": {
+    "setup": "npm install && husky install",
+    "run": "next dev",
+    "style:check": "prettier --single-quote --use-tabs --arrow-parens always --quote-props consistent --print-width 160 --check **/*.{ts,js,css,html}",
+    "style:fix": "prettier --single-quote --use-tabs --arrow-parens always --quote-props consistent --print-width 160 --write **/*.{ts,js,css,html}",
+    "lint:check": "next lint",
+    "lint:fix": "next lint --fix",
+    "test": "cypress run"
+  },
+  "dependencies": {
+    "@unly/universal-language-detector": "^2.0.3",
+    "cypress": "^12.0.1",
+    "dotenv": "^8.2.0",
+    "eslint-config-next": "^13.0.6",
+    "fs": "0.0.1-security",
+    "husky": "^8.0.2",
+    "next": "^13.0.6",
+    "prettier": "^2.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.29.0"
+  }
+}

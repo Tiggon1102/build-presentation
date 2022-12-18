@@ -1,0 +1,20 @@
+{
+    "colors": 
+    {
+        "primaryTheme": "#e6272a",
+        "secondaryTheme": "#a41bbf",
+        "buttonBackground": "#000000",
+        "font": "#ffffff"
+    },
+    "fonts": 
+    {
+        "main": "Roboto"
+    },
+    "sizes": 
+    {
+        "headlineFont": "24px",
+        "innerHeadlineFont": "20px",
+        "contentFont": "18px",
+        "dataFont": "12px"
+    }
+}
