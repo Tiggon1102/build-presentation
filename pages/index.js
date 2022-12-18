@@ -3,15 +3,14 @@ import React, { useEffect } from 'react';
 import useRouting from '../hooks/useRouting';
 import useTexts from '../hooks/useTexts';
 
-import ClientTimePage from '../sites/clientTime';
-import ServerTimePage from '../sites/serverTime';
+import PresentationPage from '../sites/presentation';
 import ImprintPage from '../sites/imprint';
 import ConditionsPage from '../sites/conditions';
 
 const App = () => {
 	// routing
 	const { path, route } = useRouting();
-	useEffect(() => route('clientTime'), []);
+	useEffect(() => route('presentation'), []);
 
 	// locales
 	const { texts } = useTexts();
@@ -22,8 +21,7 @@ const App = () => {
 	// routes
 	return (
 		<>
-			{path === 'clientTime' && <ClientTimePage route={route} texts={texts} />}
-			{path === 'serverTime' && <ServerTimePage route={route} texts={texts} />}
+			{path === 'presentation' && <PresentationPage route={route} texts={texts} />}
 			{path === 'imprint' && <ImprintPage />}
 			{path === 'conditions' && <ConditionsPage />}
 		</>

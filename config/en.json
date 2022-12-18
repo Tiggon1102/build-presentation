@@ -1,8 +1,6 @@
 {
-    "current-visit-client-label": "Current client time",
-    "last-visit-label": "You were here last time on",
-    "current-visit-server-label": "Current server time",
-    "save-visit-label": "Save visit",
-    "footer-conditions-link": "Terms and Conditions",
+    "topic-label": "Topic:",
+    "generate-button": "Generate",
+    "footer-conditions-link": "Conditions",
     "footer-imprint-link": "Imprint"
 }

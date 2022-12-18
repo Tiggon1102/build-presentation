@@ -1,4 +1,4 @@
-import getServerTime from '../../handlers/getServerTime';
+import generatePresentation from '../../handlers/generatePresentation';
 
 const api = async (req, res) => {
 	try {
@@ -12,9 +12,10 @@ const api = async (req, res) => {
 
 		// process request
 		let result;
-		if (endpoint === 'getServerTime') {
-			if (method === 'GET') {
-				result = await getServerTime();
+		if (endpoint === 'generatePresentation') {
+			if (method === 'POST') {
+				const { topic } = body;
+				result = await generatePresentation(topic);
 			} else {
 				throw new Error('Wrong request method.');
 			}
