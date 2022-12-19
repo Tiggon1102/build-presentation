@@ -1,5 +1,3 @@
-This is a simple [Next.js](https://nextjs.org/) project template.
-
 ## Purpose
 
 - website to automatically generate presentations by a given topic
