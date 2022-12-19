@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import ResizeDetector from 'react-resize-detector';
 
 import { getMyStyle } from './Element.style.js';
@@ -6,12 +6,12 @@ import useStyle from '../hooks/useStyle';
 import useDragAndDrop from '../hooks/useDragAndDrop';
 import useResize from '../hooks/useResize';
 
-const Component = ({ element, index, currentSlide, setCurrentSlide }) => {
+const Component = ({ element, updateElement, index }) => {
 	const { style } = useStyle(getMyStyle);
 
-	const { mouseDown } = useDragAndDrop(currentSlide, setCurrentSlide);
+	const { mouseDown } = useDragAndDrop(element, updateElement, index);
 
-	const { elementRef, resize } = useResize(currentSlide, setCurrentSlide, index);
+	const { elementRef, resize } = useResize(element, updateElement, index);
 
 	return (
 		<ResizeDetector handleWidth handleHeight onResize={resize}>
@@ -27,7 +27,7 @@ const Component = ({ element, index, currentSlide, setCurrentSlide }) => {
 					width: element.width,
 					height: element.height,
 				}}
-				onMouseDown={(e) => mouseDown(index, e)}
+				onMouseDown={(e) => mouseDown(e)}
 			>
 				{element.type === 'headline' && <h1>{element.value}</h1>}
 				{element.type === 'text' && (
@@ -36,17 +36,7 @@ const Component = ({ element, index, currentSlide, setCurrentSlide }) => {
 						value={element.value}
 						style={style.textElement}
 						onChange={(e) => {
-							setCurrentSlide({
-								...currentSlide,
-								elements: [
-									...currentSlide.elements.slice(0, index),
-									{
-										...element,
-										value: e.target.value,
-									},
-									...currentSlide.elements.slice(index + 1),
-								],
-							});
+							updateElement(index, { ...element, value: e.target.value });
 						}}
 					/>
 				)}

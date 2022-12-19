@@ -2,14 +2,19 @@ This is a simple [Next.js](https://nextjs.org/) project template.
 
 ## Purpose
 
-- Web Frontends
-- Serverless APIs
-+ both together (Mono-Repo)
+- website to automatically generate presentations by a given topic
+
+## Idea
+
+- user puts in topic
+- generate presentation content by speaking to [ChatGPT](https://chat.openai.com)
+- show editable presentation in frontend
 
 ## Techstack
 
-- [Next.js](https://nextjs.org)
 - [React](https://reactjs.org)
+- [Next.js](https://nextjs.org)
+- [ChatGPT](https://chat.openai.com)
 - [Prettier](https://prettier.io)
 - [ESLint](https://eslint.org)
 - [Husky](https://typicode.github.io/husky)
@@ -39,7 +44,6 @@ This is a simple [Next.js](https://nextjs.org/) project template.
 - hooks = pieces of component logic
 - pages = default routing folder
 - public = folder for static resources
-- services = integrations of web services
 - sites = frontend pages
 - .env.example = example for environment file
 - .eslintrc.json = linting settings
@@ -61,4 +65,4 @@ This is a simple [Next.js](https://nextjs.org/) project template.
 
 ## Demo 
 
-- [Live Version](https://template-nextjs-fullstack-simple.vercel.app)
+- [Live Version]()
