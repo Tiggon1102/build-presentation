@@ -17,10 +17,6 @@ const Component = ({ texts }) => {
 
 	const { currentSlide, setCurrentSlide } = useCurrentSlide(presentation, currentSlideIndex, updateSlide);
 
-	useEffect(() => {
-		console.log(currentSlide);
-	}, [currentSlide]);
-
 	return (
 		<div style={style.presentationContainer}>
 			<TopicInput startGeneration={generate} texts={texts} />

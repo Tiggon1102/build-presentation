@@ -51,9 +51,9 @@ const generateSlides = async (topics) => {
 	const slides = topics.map((topic) => ({
 		id: topic.id,
 		elements: [
-			{ x: 0, y: 0, value: topic.title, type: 'headline' },
-			{ x: 0, y: 50, value: topic.description, type: 'text' },
-			{ x: 0, y: 100, value: topic.imageUrl, type: 'image' },
+			{ x: 10, y: 0, width: 400, height: 100, value: topic.title, type: 'headline' },
+			{ x: 10, y: 90, width: 400, height: 200, value: topic.description, type: 'text' },
+			{ x: 10, y: 300, width: 200, height: 200, value: topic.imageUrl, type: 'image' },
 		],
 	}));
 	return slides;

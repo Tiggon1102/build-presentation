@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { getMyStyle } from './Element.style.js';
 import useStyle from '../hooks/useStyle';
@@ -9,13 +9,33 @@ const Component = ({ element, index, currentSlide, setCurrentSlide }) => {
 
 	const { mouseDown } = useDragAndDrop(currentSlide, setCurrentSlide);
 
+	const elementRef = useRef(null);
+
+	useEffect(() => {
+		elementRef.current.style.resize = 'both';
+	}, []);
+
+	useEffect(() => {
+		elementRef.current.addEventListener('resize', handleResize);
+		return () => elementRef.current.removeEventListener('resize', handleResize);
+	}, []);
+
+	const handleResize = () => {
+		const { width, height } = elementRef.current.getBoundingClientRect();
+		//setCurrentSlide() ???
+	};
+
 	return (
 		<div
 			key={index}
+			ref={elementRef}
 			style={{
 				position: 'absolute',
 				top: element.y,
 				left: element.x,
+				overflow: 'auto',
+				width: element.width,
+				height: element.height,
 			}}
 			onMouseDown={(e) => mouseDown(index, e)}
 		>
