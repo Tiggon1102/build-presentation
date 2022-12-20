@@ -1,6 +1,6 @@
 const OPENAI_API_KEY = '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';
 
-const ask = async (question, maxLength) => {
+const ask = async (question, maxLength = 1000) => {
 	const response = await fetch('https://api.openai.com/v1/completions', {
 		method: 'POST',
 		headers: {

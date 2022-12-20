@@ -1,36 +1,33 @@
 import { ask } from '../basics/chatGPT';
 import { fetchImageUrl } from '../basics/unsplash';
 
-const generatePresentation = async (topic) => {
-	let subTopics = await generateSubTopics(topic);
-	subTopics = await fetchImageUrlsForSubTopics(subTopics);
-	const slides = await generateSlides(subTopics);
+const getSubTopics = async (topic) => {
+	const res = await ask("give me a list of up to 20 subtopics about the topic '" + topic + "'");
+	let subTopics = res.split(/\d\.\s/);
+	subTopics.shift();
+	return subTopics;
+};
+
+const generatePresentation = async (topic, subTopics) => {
+	let content = subTopics.map((st, i) => ({ id: i, title: st, description: null, imageUrl: null }));
+	content = await fetchDescriptionsForSubTopics(topic, content);
+	content = await fetchImageUrlsForSubTopics(content);
+	const slides = await generateSlides(content);
 	return { topic, slides };
 };
 
-const generateSubTopics = async (topic) => {
-	const answer = await ask(
-		`please write a lecture with 6 paragraphs about ${topic}. 
-                                  each paragraph must have a title and one sentence of content. 
-                                  i do not want introduction or conclusion as paragraphs. 
-                                  we do not want to have a table of contents. 
-                                  there must be \n between title and content of a paragraph.
-                                  there must be \n\n between paragraphs.`,
-		1000
+const fetchDescriptionsForSubTopics = async (topic, subTopics) => {
+	const subTopicsWithDescriptions = await Promise.all(
+		subTopics.map(async (subTopic) => {
+			try {
+				const description = await ask("give me exactly one bullet point about the topic '" + topic + "' and focus on '" + subTopic.title + "'");
+				return { ...subTopic, description: description.split(' ').slice(1).join(' ') };
+			} catch (error) {
+				return { ...subTopic, description: null };
+			}
+		})
 	);
-	const blocks = answer.split('\n\n');
-	const subTopics = [];
-	for (let i = 0; i < blocks.length; i++) {
-		const block = blocks[i];
-		const [title, description] = block.split('\n');
-		const data = {
-			id: i,
-			title: title.replace(`${i}. `, '').replace('paragraph', '').replace(':', '').replace('\t', ''),
-			description,
-		};
-		subTopics.push(data);
-	}
-	return subTopics.filter((topic) => topic.title !== '');
+	return subTopicsWithDescriptions;
 };
 
 const fetchImageUrlsForSubTopics = async (topics) => {
@@ -59,4 +56,4 @@ const generateSlides = async (topics) => {
 	return slides;
 };
 
-export { generatePresentation };
+export { getSubTopics, generatePresentation };

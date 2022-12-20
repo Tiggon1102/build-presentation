@@ -1,4 +1,5 @@
 import generatePresentation from '../../handlers/generatePresentation';
+import getSubTopics from '../../handlers/getSubTopics';
 
 const api = async (req, res) => {
 	try {
@@ -12,10 +13,17 @@ const api = async (req, res) => {
 
 		// process request
 		let result;
-		if (endpoint === 'generatePresentation') {
+		if (endpoint === 'getSubTopics') {
 			if (method === 'POST') {
 				const { topic } = body;
-				result = await generatePresentation(topic);
+				result = await getSubTopics(topic);
+			} else {
+				throw new Error('Wrong request method.');
+			}
+		} else if (endpoint === 'generatePresentation') {
+			if (method === 'POST') {
+				const { topic, subTopics } = body;
+				result = await generatePresentation(topic, subTopics);
 			} else {
 				throw new Error('Wrong request method.');
 			}

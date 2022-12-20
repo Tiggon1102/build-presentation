@@ -1,5 +1,6 @@
 {
     "topic-label": "Topic:",
+    "subtitle-button": "Fetch sub topics",
     "generate-button": "Generate",
     "footer-conditions-link": "Conditions",
     "footer-imprint-link": "Imprint"

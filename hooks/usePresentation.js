@@ -4,8 +4,8 @@ import { generatePresentation } from '../fetchers/api';
 const hook = () => {
 	const [presentation, setPresentation] = useState(null);
 
-	const generate = async (topic) => {
-		const response = await generatePresentation(topic);
+	const generate = async (topic, subTopics) => {
+		const response = await generatePresentation(topic, subTopics);
 		setPresentation(response.presentation);
 	};
 
