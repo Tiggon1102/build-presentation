@@ -23,13 +23,13 @@ const Component = ({ element, updateElement, index }) => {
 					top: element.y,
 					left: element.x,
 					resize: 'both',
-					overflow: 'auto',
+					overflow: 'hidden',
 					width: element.width,
 					height: element.height,
 				}}
 				onMouseDown={(e) => mouseDown(e)}
 			>
-				{element.type === 'headline' && <h1>{element.value}</h1>}
+				{element.type === 'headline' && <h1 style={style.headlineElement}>{element.value}</h1>}
 				{element.type === 'text' && (
 					<input
 						type="text"
