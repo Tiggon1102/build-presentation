@@ -25,7 +25,20 @@ const hook = () => {
 		}
 	};
 
-	return { topic, setTopic, subTopics, loadSubTopics, updateSubTopic, addSubTopic, subTopicOptions };
+	const deleteSubTopic = (index) => {
+		setSubTopics(subTopics.filter((_, i) => i !== index));
+	};
+
+	return {
+		topic,
+		setTopic,
+		subTopics,
+		loadSubTopics,
+		updateSubTopic,
+		addSubTopic,
+		subTopicOptions,
+		deleteSubTopic,
+	};
 };
 
 export default hook;

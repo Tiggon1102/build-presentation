@@ -5,7 +5,7 @@ import useTopics from '../hooks/useTopics.js';
 
 const Component = ({ startGeneration, texts }) => {
 	const { style } = useStyle(getMyStyle);
-	const { topic, setTopic, subTopics, loadSubTopics, updateSubTopic, addSubTopic, subTopicOptions } = useTopics();
+	const { topic, setTopic, subTopics, loadSubTopics, updateSubTopic, addSubTopic, subTopicOptions, deleteSubTopic } = useTopics();
 
 	return (
 		<div style={style.topicContainer}>
@@ -24,13 +24,18 @@ const Component = ({ startGeneration, texts }) => {
 			</p>
 			<p>
 				{subTopics.map((subTopic, index) => (
-					<select key={index} value={subTopic} onChange={(event) => updateSubTopic(index, event.target.value)}>
-						{subTopicOptions.map((subTopicOption) => (
-							<option key={subTopicOption} value={subTopicOption}>
-								{subTopicOption}
-							</option>
-						))}
-					</select>
+					<div key={index} style={style.subTopicContainer}>
+						<button style={style.deleteButton} onClick={() => deleteSubTopic(index)}>
+							X
+						</button>
+						<select value={subTopic} onChange={(event) => updateSubTopic(index, event.target.value)}>
+							{subTopicOptions.map((subTopicOption) => (
+								<option key={subTopicOption} value={subTopicOption}>
+									{subTopicOption}
+								</option>
+							))}
+						</select>
+					</div>
 				))}
 				<button onClick={addSubTopic}>+</button>
 				<button onClick={() => startGeneration(topic, subTopics)}>{texts['generate-button']}</button>
