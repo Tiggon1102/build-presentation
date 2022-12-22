@@ -24,15 +24,18 @@ const Component = ({ element, updateElement, index }) => {
 					left: element.x,
 					resize: 'both',
 					overflow: 'hidden',
-					width: element.width,
+					width: element.type === 'image' ? 'auto' : element.width,
 					height: element.height,
 				}}
-				onMouseDown={(e) => mouseDown(e)}
 			>
-				{element.type === 'headline' && <h1 style={style.headlineElement}>{element.value}</h1>}
+				{element.type === 'headline' && (
+					<h1 style={style.headlineElement} onMouseDown={(e) => mouseDown(e)}>
+						{element.value}
+					</h1>
+				)}
 				{element.type === 'text' && (
-					<input
-						type="text"
+					<textarea
+						onMouseDown={(e) => mouseDown(e)}
 						value={element.value}
 						style={style.textElement}
 						onChange={(e) => {
@@ -40,7 +43,7 @@ const Component = ({ element, updateElement, index }) => {
 						}}
 					/>
 				)}
-				{element.type === 'image' && <img src={element.value} style={style.imageElement} />}
+				{element.type === 'image' && <img onMouseDown={(e) => mouseDown(e)} src={element.value} style={style.imageElement} />}
 			</div>
 		</ResizeDetector>
 	);
