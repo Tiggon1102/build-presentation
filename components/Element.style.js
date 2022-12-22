@@ -16,6 +16,7 @@ const getMyStyle = () => ({
 		'border': '1px black solid',
 		'resize': 'none',
 		'border-radius': '23px',
+		'user-select': 'none',
 	},
 });
 
