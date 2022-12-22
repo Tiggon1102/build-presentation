@@ -10,7 +10,7 @@ const getMyStyle = () => ({
 		display: 'flex',
 	},
 	deleteButton: {
-		backgroundColor: 'red',
+		backgroundColor: template.colors.errorButtonBackground,
 		color: 'white',
 		border: 'none',
 		cursor: 'pointer',

@@ -1,3 +1,5 @@
+const template = require('../config/styles.json');
+
 const getMyStyle = () => ({
 	container: {
 		paddingTop: '20px',
@@ -7,18 +9,18 @@ const getMyStyle = () => ({
 	leftBar: {
 		float: 'left',
 		display: 'flex',
-		color: 'white',
+		color: template.colors.linkText,
 		marginLeft: '30px',
 		marginBottom: '20px',
 	},
 	rightBar: {
 		float: 'right',
-		color: 'white',
+		color: template.colors.linkText,
 		marginRight: '50px',
 	},
 	link: {
-		color: 'white',
-		fontFamily: 'Verdana',
+		color: template.colors.linkText,
+		fontFamily: template.colors.errorButtonLabel,
 		fontSize: '20px',
 		marginLeft: '22px',
 		cursor: 'pointer',

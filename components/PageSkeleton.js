@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Header from './Header';
 import Footer from './Footer';
 import PageContent from './PageContent';
 
@@ -17,7 +16,6 @@ const Component = ({ route, children, texts }) => {
 				}
 			`}</style>
 			<div style={style.container}>
-				<Header route={route} />
 				<PageContent>{children}</PageContent>
 				<Footer route={route} texts={texts} />
 			</div>
