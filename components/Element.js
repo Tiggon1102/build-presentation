@@ -18,6 +18,7 @@ const Component = ({ element, updateElement, index }) => {
 			<div
 				key={index}
 				ref={elementRef}
+				onMouseDown={(e) => mouseDown(e)}
 				style={{
 					position: 'absolute',
 					top: element.y,
@@ -28,14 +29,9 @@ const Component = ({ element, updateElement, index }) => {
 					height: element.height,
 				}}
 			>
-				{element.type === 'headline' && (
-					<h1 style={style.headlineElement} onMouseDown={(e) => mouseDown(e)}>
-						{element.value}
-					</h1>
-				)}
+				{element.type === 'headline' && <h1 style={style.headlineElement}>{element.value}</h1>}
 				{element.type === 'text' && (
 					<textarea
-						onMouseDown={(e) => mouseDown(e)}
 						value={element.value}
 						style={style.textElement}
 						onChange={(e) => {
@@ -43,7 +39,7 @@ const Component = ({ element, updateElement, index }) => {
 						}}
 					/>
 				)}
-				{element.type === 'image' && <img onMouseDown={(e) => mouseDown(e)} src={element.value} style={style.imageElement} />}
+				{element.type === 'image' && <img src={element.value} style={style.imageElement} />}
 			</div>
 		</ResizeDetector>
 	);

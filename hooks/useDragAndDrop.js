@@ -4,16 +4,18 @@ const hook = (element, updateElement, index) => {
 	const mouseDown = (e) => {
 		const initialX = e.clientX - element.x;
 		const initialY = e.clientY - element.y;
+		const paneWidth = Number(document.getElementById('pane').style.width.slice(0, -2));
+		const paneHeight = Number(document.getElementById('pane').style.height.slice(0, -2));
 		const handleMouseMove = (e) => {
 			const newX = e.clientX - initialX;
 			const newY = e.clientY - initialY;
 			let xyData = element;
 			if (newX < 0) xyData.x = 0;
-			if (newX >= 0 && newX <= 800 - element.width) xyData.x = newX;
-			if (newX > 800) xyData.x = 800 - element.width;
+			if (newX >= 0 && newX <= paneWidth - element.width) xyData.x = newX;
+			if (newX > paneWidth) xyData.x = paneWidth - element.width;
 			if (newY < 0) xyData.y = 0;
-			if (newY >= 0 && newY <= 500 - element.height) xyData.y = newY;
-			if (newY > 500) xyData.y = 500 - element.height;
+			if (newY >= 0 && newY <= paneHeight - element.height) xyData.y = newY;
+			if (newY > paneHeight) xyData.y = paneHeight - element.height;
 			updateElement(index, xyData);
 		};
 		handleMouseMoveRef.current = handleMouseMove;

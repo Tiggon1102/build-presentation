@@ -50,7 +50,7 @@ const generateSlides = async (topics) => {
 		elements: [
 			{ id: 0, x: 10, y: 0, width: 'auto', height: 'auto', value: topic.title, type: 'headline' },
 			{ id: 1, x: 10, y: 90, width: 400, height: 200, value: topic.description, type: 'text' },
-			{ id: 2, x: 10, y: 300, width: 200, height: 190, value: topic.imageUrl, type: 'image' },
+			{ id: 2, x: 10, y: 300, width: 500, height: 190, value: topic.imageUrl, type: 'image' },
 		],
 	}));
 	return slides;
