@@ -1,22 +1,19 @@
 import { useEffect, useRef } from 'react';
 
 const hook = (element, updateElement, index) => {
-	const mouseDown = (e) => {
+	const mouseDown = (e, slideWidth, slideHeight) => {
 		const initialX = e.clientX - element.x;
 		const initialY = e.clientY - element.y;
-		const paneWidth = Number(document.getElementById('pane').style.width.slice(0, -2));
-		const paneHeight = Number(document.getElementById('pane').style.height.slice(0, -2));
 		const handleMouseMove = (e) => {
-			const newX = e.clientX - initialX;
-			const newY = e.clientY - initialY;
-			let xyData = element;
-			if (newX < 0) xyData.x = 0;
-			if (newX >= 0 && newX <= paneWidth - element.width) xyData.x = newX;
-			if (newX > paneWidth) xyData.x = paneWidth - element.width;
-			if (newY < 0) xyData.y = 0;
-			if (newY >= 0 && newY <= paneHeight - element.height) xyData.y = newY;
-			if (newY > paneHeight) xyData.y = paneHeight - element.height;
-			updateElement(index, xyData);
+			let newX = e.clientX - initialX;
+			let newY = e.clientY - initialY;
+			if (newX < 0) newX = 0;
+			if (newX >= 0 && newX <= slideWidth - element.width) newX = newX;
+			if (newX > slideWidth) newX = slideWidth - element.width;
+			if (newY < 0) newY = 0;
+			if (newY >= 0 && newY <= slideHeight - element.height) newY = newY;
+			if (newY > slideHeight) newY = slideHeight - element.height;
+			updateElement(index, { ...element, x: newX, y: newY });
 		};
 		handleMouseMoveRef.current = handleMouseMove;
 		document.addEventListener('mousemove', handleMouseMove);
