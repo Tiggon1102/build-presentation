@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import ResizeDetector from 'react-resize-detector';
 
 import { getMyStyle } from './Element.style.js';
@@ -7,7 +7,7 @@ import useDragAndDrop from '../hooks/useDragAndDrop';
 import useResize from '../hooks/useResize';
 
 const Component = ({ element, updateElement, index }) => {
-	const { style } = useStyle(getMyStyle);
+	const { style } = useStyle(getMyStyle, { element }, [element]);
 
 	const { mouseDown } = useDragAndDrop(element, updateElement, index);
 
@@ -18,21 +18,14 @@ const Component = ({ element, updateElement, index }) => {
 			<div
 				key={index}
 				ref={elementRef}
-				style={{
-					position: 'absolute',
-					top: element.y,
-					left: element.x,
-					resize: 'both',
-					overflow: 'hidden',
-					width: element.width,
-					height: element.height,
-				}}
-				onMouseDown={(e) => mouseDown(e)}
+				onMouseDown={(e) =>
+					mouseDown(e, Number(document.getElementById('slide').style.width.slice(0, -2)), Number(document.getElementById('slide').style.height.slice(0, -2)))
+				}
+				style={style.elementContainer}
 			>
 				{element.type === 'headline' && <h1 style={style.headlineElement}>{element.value}</h1>}
 				{element.type === 'text' && (
-					<input
-						type="text"
+					<textarea
 						value={element.value}
 						style={style.textElement}
 						onChange={(e) => {

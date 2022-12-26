@@ -11,13 +11,13 @@
     },
     "fonts": 
     {
-        "main": "Roboto"
+        "main": "arial"
     },
     "sizes": 
     {
-        "headlineFont": "24px",
+        "headlineFont": "26px",
         "innerHeadlineFont": "20px",
-        "contentFont": "18px",
+        "contentFont": "16px",
         "dataFont": "12px"
     }
 }

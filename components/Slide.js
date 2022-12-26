@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { getMyStyle } from './Slide.style.js';
 import useStyle from '../hooks/useStyle';
@@ -13,7 +13,7 @@ const Component = ({ currentSlide, setCurrentSlide }) => {
 	const { addElement, updateElement } = useElements(currentSlide, setCurrentSlide, slideRef);
 
 	return (
-		<div style={style.slideContainer} onDoubleClick={addElement} ref={slideRef}>
+		<div id="slide" style={style.slideContainer} onDoubleClick={addElement} ref={slideRef}>
 			{currentSlide && currentSlide.elements.map((element, index) => <Element key={index} element={element} updateElement={updateElement} index={index} />)}
 		</div>
 	);
