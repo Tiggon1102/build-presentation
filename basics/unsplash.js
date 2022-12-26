@@ -1,5 +1,4 @@
-const UNSPLASH_ACCESS_KEY = '8o-mTkIItzXSpBixlH8NSYTELy6oWJyoKk-mV-YHjVk';
-const UNSPLASH_SECRET_KEY = 'kEOpIuJubVybJtgmtEu8HZnh6NBqWJFxSPWEakFf-LY';
+const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
 
 const fetchImageUrl = async (topic) => {
 	const searchTerm = topic.replace(' ', '-');
