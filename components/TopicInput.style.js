@@ -6,7 +6,7 @@ const getMyStyle = () => ({
 		flexDirection: 'column',
 		gap: '10px',
 		position: 'relative',
-		height: '50vh',
+		minHeight: '400px',
 	},
 	topicInputContainer: {
 		display: 'flex',
@@ -17,15 +17,16 @@ const getMyStyle = () => ({
 		marginRight: '10px',
 		fontFamily: template.fonts.main,
 		color: template.colors.primaryFont,
+		fontWeight: 'bold',
 	},
 	input: {
-		flex: 1,
+		width: '420px',
 	},
 	contentsButton: {
 		backgroundColor: template.colors.primaryButtonBackground,
 		border: 'none',
 		cursor: 'pointer',
-		margin: '0 10px',
+		marginLeft: '10px',
 		fontFamily: template.fonts.main,
 		color: template.colors.primaryButtonLabel,
 		width: '150px',
@@ -39,6 +40,9 @@ const getMyStyle = () => ({
 		flexDirection: 'column',
 		gap: '10px',
 		position: 'relative',
+	},
+	subTopicSelect: {
+		width: '220px',
 	},
 	deleteButton: {
 		backgroundColor: template.colors.errorButtonBackground,
@@ -66,8 +70,8 @@ const getMyStyle = () => ({
 		backgroundColor: template.colors.primaryButtonBackground,
 		border: 'none',
 		cursor: 'pointer',
-		position: 'absolute',
-		bottom: '0px',
+		marginTop: '30px',
+		marginLeft: '10px',
 		fontFamily: template.fonts.main,
 		color: template.colors.primaryButtonLabel,
 		width: '150px',

@@ -28,11 +28,11 @@ const Component = ({ generate, texts }) => {
 					<div style={style.subTopicContainer}>
 						<label style={style.label}>{texts['contents-label']}</label>
 						{subTopics.map((subTopic, index) => (
-							<div key={index} style={style.subTopic}>
+							<div key={index}>
 								<button style={style.deleteButton} onClick={() => deleteSubTopic(index)}>
 									X
 								</button>
-								<select value={subTopic} onChange={(event) => updateSubTopic(index, event.target.value)}>
+								<select value={subTopic} style={style.subTopicSelect} onChange={(event) => updateSubTopic(index, event.target.value)}>
 									{subTopicOptions.map((subTopicOption) => (
 										<option key={subTopicOption} value={subTopicOption}>
 											{subTopicOption}

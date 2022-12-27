@@ -4,7 +4,7 @@ const getMyStyle = () => ({
 		alignSelf: 'center',
 		paddingLeft: '20px',
 		paddingRight: '20px',
-		width: '80%',
+		width: '90%',
 		maxWidth: '800px',
 		height: 'min-content',
 		display: 'flex',

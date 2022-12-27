@@ -4,6 +4,7 @@ const getMyStyle = () => ({
 	presentationContainer: {
 		display: 'flex',
 		flexDirection: 'column',
+		position: 'relative',
 	},
 });
 
