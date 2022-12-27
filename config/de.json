@@ -3,5 +3,10 @@
     "subtitle-button": "Unterthemen laden",
     "generate-button": "Generieren",
     "footer-conditions-link": "AGB",
-    "footer-imprint-link": "Impressum"
+    "footer-imprint-link": "Impressum",
+    "previous-button": "Zurück",
+    "next-button": "Weiter",
+    "back-to-topics-button": "Zurück zu der Themenauswahl",
+    "back-to-edit-button": "Zurück zur Bearbeitung",
+    "export-button": "Export"
 }

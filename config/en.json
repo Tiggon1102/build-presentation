@@ -3,5 +3,10 @@
     "subtitle-button": "Fetch sub topics",
     "generate-button": "Generate",
     "footer-conditions-link": "Conditions",
-    "footer-imprint-link": "Imprint"
+    "footer-imprint-link": "Imprint",
+    "previous-button": "Previous",
+    "next-button": "Next",
+    "back-to-topics-button": "Back to topics",
+    "back-to-edit-button": "Back to edit",
+    "export-button": "Export"
 }

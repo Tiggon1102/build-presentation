@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { getMyStyle } from './PresentationEditor.style.js';
 import useStyle from '../hooks/useStyle';
 import useSlider from '../hooks/useSlider';
 import useCurrentSlide from '../hooks/useCurrentSlide';
 import Slide from './Slide.js';
-import TopicInput from './TopicInput.js';
-import usePresentation from '../hooks/usePresentation.js';
+import SlideNavigation from './SlideNavigation.js';
+import EditorNavigation from './EditorNavigation.js';
+import SlideSettings from './SlideSettings.js';
+import ElementBacklog from './ElementBacklog.js';
 
-const Component = ({ texts }) => {
+const Component = ({ texts, presentation, updateSlide, setCurrentStep }) => {
 	const { style } = useStyle(getMyStyle);
-
-	const { presentation, generate, updateSlide } = usePresentation();
 
 	const { currentSlideIndex, prevSlide, nextSlide } = useSlider(presentation ? presentation.slides.length : 0);
 
@@ -19,12 +19,11 @@ const Component = ({ texts }) => {
 
 	return (
 		<div style={style.presentationContainer}>
-			<TopicInput startGeneration={generate} texts={texts} />
+			<EditorNavigation texts={texts} setCurrentStep={setCurrentStep} />
+			<SlideNavigation texts={texts} prevSlide={prevSlide} nextSlide={nextSlide} />
 			<Slide currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
-			<div style={style.navigationBar}>
-				<button onClick={prevSlide}>Previous</button>
-				<button onClick={nextSlide}>Next</button>
-			</div>
+			<SlideSettings texts={texts} />
+			<ElementBacklog texts={texts} />
 		</div>
 	);
 };

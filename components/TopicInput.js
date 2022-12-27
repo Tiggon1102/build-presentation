@@ -3,7 +3,7 @@ import { getMyStyle } from './TopicInput.style.js';
 import useStyle from '../hooks/useStyle';
 import useTopics from '../hooks/useTopics.js';
 
-const Component = ({ startGeneration, texts }) => {
+const Component = ({ generate, texts }) => {
 	const { style } = useStyle(getMyStyle);
 	const { topic, setTopic, subTopics, loadSubTopics, updateSubTopic, addSubTopic, subTopicOptions, deleteSubTopic } = useTopics();
 
@@ -38,7 +38,7 @@ const Component = ({ startGeneration, texts }) => {
 					</div>
 				))}
 				<button onClick={addSubTopic}>+</button>
-				<button onClick={() => startGeneration(topic, subTopics)}>{texts['generate-button']}</button>
+				<button onClick={() => generate(topic, subTopics)}>{texts['generate-button']}</button>
 			</p>
 		</div>
 	);

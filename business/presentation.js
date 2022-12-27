@@ -12,7 +12,7 @@ const generatePresentation = async (topic, subTopics) => {
 	let content = subTopics.map((st, i) => ({ id: i, title: st, description: null, imageUrl: null }));
 	content = await fetchDescriptionsForSubTopics(topic, content);
 	content = await fetchImageUrlsForSubTopics(content);
-	const slides = await generateSlides(content);
+	const slides = await generateSlides(topic, content);
 	return { topic, slides };
 };
 
@@ -44,16 +44,34 @@ const fetchImageUrlsForSubTopics = async (topics) => {
 	return topicsWithImageUrls;
 };
 
-const generateSlides = async (topics) => {
-	const slides = topics.map((topic) => ({
-		id: topic.id,
+const generateSlides = async (topic, topics) => {
+	const startSlides = [
+		{
+			id: 0,
+			elements: [{ id: 0, x: 10, y: 0, width: '90%', height: 'auto', value: topic, type: 'headline' }],
+		},
+		{
+			id: 1,
+			elements: topics.map((topic, i) => ({
+				id: i,
+				x: 10,
+				y: 10 + i * 50,
+				width: '90%',
+				height: 'auto',
+				value: topic.title,
+				type: 'text',
+			})),
+		},
+	];
+	const contentSlides = topics.map((topic) => ({
+		id: Number(topic.id) + 2,
 		elements: [
 			{ id: 0, x: 10, y: 0, width: '90%', height: 'auto', value: topic.title, type: 'headline' },
 			{ id: 1, x: 10, y: 80, width: '90%', height: 'auto', value: topic.description, type: 'text' },
 			{ id: 2, x: 10, y: 200, width: '15%', height: 'auto', value: topic.imageUrl, type: 'image' },
 		],
 	}));
-	return slides;
+	return [...startSlides, ...contentSlides];
 };
 
 export { getSubTopics, generatePresentation };
