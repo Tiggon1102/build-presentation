@@ -2,7 +2,19 @@ const template = require('../config/styles.json');
 
 const getMyStyle = () => ({
 	navigationBar: {
-		marginTop: 20,
+		display: 'flex',
+		width: '100%',
+	},
+	slideNumbers: {
+		display: 'flex',
+	},
+	slideNumber: {
+		cursor: 'pointer',
+		textDecoration: 'none',
+	},
+	navigationButtons: {
+		display: 'flex',
+		justifyContent: 'flex-end',
 	},
 });
 

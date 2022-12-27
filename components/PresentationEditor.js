@@ -13,14 +13,21 @@ import ElementBacklog from './ElementBacklog.js';
 const Component = ({ texts, presentation, updateSlide, setCurrentStep }) => {
 	const { style } = useStyle(getMyStyle);
 
-	const { currentSlideIndex, prevSlide, nextSlide } = useSlider(presentation ? presentation.slides.length : 0);
+	const { currentSlideIndex, setCurrentSlideIndex, prevSlide, nextSlide } = useSlider(presentation ? presentation.slides.length : 0);
 
 	const { currentSlide, setCurrentSlide } = useCurrentSlide(presentation, currentSlideIndex, updateSlide);
 
 	return (
 		<div style={style.presentationContainer}>
 			<EditorNavigation texts={texts} setCurrentStep={setCurrentStep} />
-			<SlideNavigation texts={texts} prevSlide={prevSlide} nextSlide={nextSlide} />
+			<SlideNavigation
+				texts={texts}
+				prevSlide={prevSlide}
+				nextSlide={nextSlide}
+				currentSlideIndex={currentSlideIndex}
+				setCurrentSlideIndex={setCurrentSlideIndex}
+				presentationLength={presentation ? presentation.slides.length : 0}
+			/>
 			<Slide currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
 			<SlideSettings texts={texts} />
 			<ElementBacklog texts={texts} />

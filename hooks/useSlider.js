@@ -15,7 +15,7 @@ const hook = (presentationLength) => {
 		}
 	};
 
-	return { currentSlideIndex, prevSlide, nextSlide };
+	return { currentSlideIndex, prevSlide, nextSlide, setCurrentSlideIndex };
 };
 
 export default hook;
