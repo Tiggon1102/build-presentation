@@ -9,37 +9,47 @@ const Component = ({ generate, texts }) => {
 
 	return (
 		<div style={style.topicContainer}>
-			<p>
-				<label>
-					{texts['topic-label']}
-					<input
-						type="text"
-						value={topic}
-						onChange={(event) => {
-							setTopic(event.target.value);
-						}}
-					/>
-				</label>
-				<button onClick={() => loadSubTopics(topic)}>{texts['subtitle-button']}</button>
-			</p>
-			<p>
-				{subTopics.map((subTopic, index) => (
-					<div key={index} style={style.subTopicContainer}>
-						<button style={style.deleteButton} onClick={() => deleteSubTopic(index)}>
-							X
+			<div style={style.topicInputContainer}>
+				<label style={style.label}>{texts['topic-label']}</label>
+				<input
+					type="text"
+					value={topic}
+					onChange={(event) => {
+						setTopic(event.target.value);
+					}}
+					style={style.input}
+				/>
+				<button style={style.contentsButton} onClick={() => loadSubTopics(topic)}>
+					{texts['subtitle-button']}
+				</button>
+			</div>
+			{subTopics.length > 0 && (
+				<>
+					<div style={style.subTopicContainer}>
+						<label style={style.label}>{texts['contents-label']}</label>
+						{subTopics.map((subTopic, index) => (
+							<div key={index} style={style.subTopic}>
+								<button style={style.deleteButton} onClick={() => deleteSubTopic(index)}>
+									X
+								</button>
+								<select value={subTopic} onChange={(event) => updateSubTopic(index, event.target.value)}>
+									{subTopicOptions.map((subTopicOption) => (
+										<option key={subTopicOption} value={subTopicOption}>
+											{subTopicOption}
+										</option>
+									))}
+								</select>
+							</div>
+						))}
+						<button style={style.addButton} onClick={addSubTopic}>
+							+
 						</button>
-						<select value={subTopic} onChange={(event) => updateSubTopic(index, event.target.value)}>
-							{subTopicOptions.map((subTopicOption) => (
-								<option key={subTopicOption} value={subTopicOption}>
-									{subTopicOption}
-								</option>
-							))}
-						</select>
 					</div>
-				))}
-				<button onClick={addSubTopic}>+</button>
-				<button onClick={() => generate(topic, subTopics)}>{texts['generate-button']}</button>
-			</p>
+					<button style={style.generateButton} onClick={() => generate(topic, subTopics)}>
+						{texts['generate-button']}
+					</button>
+				</>
+			)}
 		</div>
 	);
 };

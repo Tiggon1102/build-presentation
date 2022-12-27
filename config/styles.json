@@ -1,13 +1,16 @@
 {
     "colors": 
     {
-        "primaryTheme": "#e6272a",
-        "secondaryTheme": "#a41bbf",
-        "primaryButtonBackground": "#000000",
-        "errorButtonBackground": "#ff0000",
-        "errorButtonLabel": "#000000",
+        "primaryTheme": "#0f4efa",
+        "secondaryTheme": "#0feefa",
+        "primaryButtonBackground": "#460ce8",
+        "primaryButtonLabel": "#ffffff",
+        "successButtonBackground": "#13c242",
+        "successButtonLabel": "#ffffff",
+        "errorButtonBackground": "#d90f3b",
+        "errorButtonLabel": "#ffffff",
         "linkText": "#000000",
-        "font": "#ffffff"
+        "primaryFont": "#000000"
     },
     "fonts": 
     {
