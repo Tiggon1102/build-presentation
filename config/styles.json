@@ -3,6 +3,7 @@
     {
         "primaryTheme": "#0f4efa",
         "secondaryTheme": "#0feefa",
+        "defaultTheme": "#ffffff",
         "primaryButtonBackground": "#460ce8",
         "primaryButtonLabel": "#ffffff",
         "successButtonBackground": "#13c242",

@@ -7,7 +7,6 @@ import useCurrentSlide from '../hooks/useCurrentSlide';
 import Slide from './Slide.js';
 import SlideNavigation from './SlideNavigation.js';
 import EditorNavigation from './EditorNavigation.js';
-import SlideSettings from './SlideSettings.js';
 import ElementBacklog from './ElementBacklog.js';
 
 const Component = ({ texts, presentation, updateSlide, setCurrentStep }) => {
@@ -29,7 +28,6 @@ const Component = ({ texts, presentation, updateSlide, setCurrentStep }) => {
 				presentationLength={presentation ? presentation.slides.length : 0}
 			/>
 			<Slide currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
-			<SlideSettings texts={texts} />
 			<ElementBacklog texts={texts} />
 		</div>
 	);
