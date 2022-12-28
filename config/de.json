@@ -8,5 +8,7 @@
     "next-button": "Weiter",
     "back-to-topics-button": "Zurück zu der Themenauswahl",
     "back-to-edit-button": "Zurück zur Bearbeitung",
-    "export-button": "Export"
+    "export-button": "Export",
+    "introduction-text": "Dieser automatische Präsentationsgenerator ermöglicht es Ihnen, ein Thema zu definieren und eine Gliederung zu erstellen. Dann wird build-my-presentation automatisch eine Präsentation für Sie erstellen. Mit unserer Plattform können Sie Stunden an Zeit sparen, die Sie normalerweise für das Recherchieren des Themas und das Gestalten einer Präsentation brauchen würden. Unsere Präsentationen sind vollständig bearbeitbar und können am Ende exportiert werden",
+    "introduction-title": "build-my-presentation"
 }
