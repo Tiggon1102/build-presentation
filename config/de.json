@@ -10,5 +10,7 @@
     "back-to-edit-button": "Zurück zur Bearbeitung",
     "export-button": "Export",
     "introduction-text": "Diese Webseite generiert automatisch eine Präsentation für ein beliebiges Thema.",
-    "introduction-title": "build-my-presentation"
+    "introduction-title": "build-my-presentation",
+    "results-title": "Ergebnisse",
+    "presentation-label": "Präsentation"
 }

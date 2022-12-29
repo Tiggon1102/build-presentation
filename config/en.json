@@ -10,5 +10,7 @@
     "back-to-edit-button": "Back to edit",
     "export-button": "Export",
     "introduction-text": "This website automatically generates a presentation for a given topic.",
-    "introduction-title": "build-my-presentation"
+    "introduction-title": "build-my-presentation",
+    "results-title": "Results",
+    "presentation-label": "Presentation"
 }
