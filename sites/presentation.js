@@ -15,7 +15,7 @@ const Page = ({ route, texts }) => {
 			<ContentBox>
 				{currentStep === 'topic' && <TopicInput generate={generate} texts={texts} />}
 				{currentStep === 'edit' && <PresentationEditor texts={texts} presentation={presentation} updateSlide={updateSlide} setCurrentStep={setCurrentStep} />}
-				{currentStep === 'result' && <Results texts={texts} />}
+				{currentStep === 'result' && <Results texts={texts} setCurrentStep={setCurrentStep} />}
 			</ContentBox>
 		</PageSkeleton>
 	);
