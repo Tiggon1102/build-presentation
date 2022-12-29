@@ -12,7 +12,7 @@ const getMyStyle = () => ({
 		textDecoration: 'underline',
 	},
 	image: {
-		width: '100%',
+		height: '400px',
 		marginTop: '30px',
 	},
 	text: {

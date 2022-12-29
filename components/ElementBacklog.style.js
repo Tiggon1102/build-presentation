@@ -12,18 +12,21 @@ const getMyStyle = () => ({
 		display: 'flex',
 		gap: '15px',
 		height: '30px',
+		width: '100%',
 	},
 	input: {
 		flex: '1',
+		width: '100px',
 	},
 	images: {
 		display: 'flex',
 		marginTop: '20px',
 		gap: '15px',
+		width: '100%',
 	},
 	image: {
 		width: 'auto',
-		height: '200px',
+		height: '80px',
 	},
 });
 

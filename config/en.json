@@ -9,6 +9,6 @@
     "back-to-topics-button": "Back to topics",
     "back-to-edit-button": "Back to edit",
     "export-button": "Export",
-    "introduction-text": "This automatic presentation generator allows you to define a topic and set up a table of contents. Then build-my-presentation will automatically generate a presentation for you. With our platform, you can save hours of time that you would normally spend on researching the topic and creating a presentation from scratch. Our presentations are fully editable and can be exported in the end.",
+    "introduction-text": "This website automatically generates a presentation for a given topic.",
     "introduction-title": "build-my-presentation"
 }
