@@ -47,6 +47,10 @@ const fetchImageUrlsForSubTopics = async (topics) => {
 const generateSlides = async (topic, topics) => {
 	const startSlides = [
 		{
+			id: -1,
+			elements: [],
+		},
+		{
 			id: 0,
 			elements: [{ id: 0, x: 10, y: 0, width: '90%', height: 'auto', value: topic, type: 'headline' }],
 		},
