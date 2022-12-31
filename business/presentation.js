@@ -2,32 +2,34 @@ import { ask } from '../basics/chatGPT';
 import { fetchImageUrl } from '../basics/unsplash';
 
 const getSubTopics = async (topic) => {
-	const res = await ask("give me a list of up to 20 subtopics about the topic '" + topic + "'");
-	let subTopics = res.split(/\d\.\s/);
-	subTopics.shift();
+	const res = await ask(
+		"I need 20 subtopics about the topic '" +
+			topic +
+			"'. I want you to answer only with a json object which looks like this (do not use any new lines and do use double quotes around the strings): ['Behaviour', 'Types of cat', 'Food', ... ]"
+	);
+	const subTopics = JSON.parse(res);
 	return subTopics;
 };
 
 const generatePresentation = async (topic, subTopics) => {
-	let content = subTopics.map((st, i) => ({ id: i, title: st, description: null, imageUrl: null }));
-	content = await fetchDescriptionsForSubTopics(topic, content);
+	let content = await fetchDescriptionsForSubTopics(topic, subTopics);
 	content = await fetchImageUrlsForSubTopics(content);
 	const slides = await generateSlides(topic, content);
 	return { topic, slides };
 };
 
 const fetchDescriptionsForSubTopics = async (topic, subTopics) => {
-	const subTopicsWithDescriptions = await Promise.all(
-		subTopics.map(async (subTopic) => {
-			try {
-				const description = await ask("give me exactly one bullet point about the topic '" + topic + "' and focus on '" + subTopic.title + "'");
-				return { ...subTopic, description: description.split(' ').slice(1).join(' ') };
-			} catch (error) {
-				return { ...subTopic, description: null };
-			}
-		})
+	const res = await ask(
+		'I need you to return 1 important fact as a bullet point for each of these subtopics ' +
+			JSON.stringify(subTopics) +
+			' of the topic ' +
+			topic +
+			". I want you to answer only with a json object which looks like this (do not use any new lines and do use double quotes around the strings): [{ id: 0, title: 'Breeds of Cat', description: 'very wild'}, ... ]"
 	);
-	return subTopicsWithDescriptions;
+	console.log(res);
+	const content = JSON.parse(res);
+	console.log(content);
+	return content;
 };
 
 const fetchImageUrlsForSubTopics = async (topics) => {
