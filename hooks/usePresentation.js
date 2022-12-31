@@ -11,7 +11,7 @@ const hook = (setCurrentStep) => {
 	};
 
 	const updateSlide = (index, newSlide) => {
-		if (!presentation) return;
+		if (!presentation || !newSlide) return;
 		let newPresentation = presentation;
 		newPresentation.slides[index] = newSlide;
 		setPresentation(newPresentation);
