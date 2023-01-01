@@ -3,9 +3,7 @@ import { fetchImageUrl } from '../basics/unsplash';
 
 const getSubTopics = async (topic) => {
 	const res = await ask(
-		"I need 20 subtopics about the topic '" +
-			topic +
-			"'. I want you to answer only with a json object which looks like this (do not use any new lines and do use double quotes around the strings): ['Behaviour', 'Types of cat', 'Food', ... ]"
+		`I need 20 subtopics about the topic ${topic}. I want you to answer only with a json object which looks like this (do not use any new lines and do use double quotes around the strings): ["Behaviour", "Types of cat", "Food", ... ]`
 	);
 	const subTopics = JSON.parse(res);
 	return subTopics;
@@ -20,15 +18,11 @@ const generatePresentation = async (topic, subTopics) => {
 
 const fetchDescriptionsForSubTopics = async (topic, subTopics) => {
 	const res = await ask(
-		'I need you to return 1 important fact as a bullet point for each of these subtopics ' +
-			JSON.stringify(subTopics) +
-			' of the topic ' +
-			topic +
-			". I want you to answer only with a json object which looks like this (do not use any new lines and do use double quotes around the strings): [{ id: 0, title: 'Breeds of Cat', description: 'very wild'}, ... ]"
+		`I need you to build an array of json objects for these subtopics (${JSON.stringify(
+			subTopics
+		)}). Please assign an id. Add a title attribute which is the name of the subtopic. Also find one important fact (as a bullet point) for each of these subtopics of the topic ${topic}. Save this fact in an attribute called description. I want you to send me only a json object. Do not use any new lines. Use double quotes around every string. It should look like this: [{ "id": 0, "title": "Breeds of Cat", "description": "very wild" }, { "id": 1, "title": "Types of Cat", "description": "pet cats" }, ... ]`
 	);
-	console.log(res);
 	const content = JSON.parse(res);
-	console.log(content);
 	return content;
 };
 
