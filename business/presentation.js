@@ -1,4 +1,7 @@
 import { ask } from '../basics/chatGPT';
+
+// this is returning very nice results but limited to 50 requests per month - so we have dont want to use it now during development
+// import { fetchImageUrl } from '../basics/dalle';
 import { fetchImageUrl } from '../basics/unsplash';
 
 const getSubTopics = async (topic) => {
@@ -11,7 +14,7 @@ const getSubTopics = async (topic) => {
 
 const generatePresentation = async (topic, subTopics) => {
 	let content = await fetchDescriptionsForSubTopics(topic, subTopics);
-	content = await fetchImageUrlsForSubTopics(content);
+	content = await fetchImageUrlsForSubTopics(topic, content);
 	const slides = await generateSlides(topic, content);
 	return { topic, slides };
 };
@@ -26,14 +29,14 @@ const fetchDescriptionsForSubTopics = async (topic, subTopics) => {
 	return content;
 };
 
-const fetchImageUrlsForSubTopics = async (topics) => {
+const fetchImageUrlsForSubTopics = async (topic, topics) => {
 	const topicsWithImageUrls = await Promise.all(
-		topics.map(async (topic) => {
+		topics.map(async (subTopic) => {
 			try {
-				const imageUrl = await fetchImageUrl(topic.title);
-				return { ...topic, imageUrl };
+				const imageUrl = await fetchImageUrl(topic + ' ' + subTopic.title);
+				return { ...subTopic, imageUrl };
 			} catch (error) {
-				return { ...topic, imageUrl: null };
+				return { ...subTopic, imageUrl: null };
 			}
 		})
 	);
