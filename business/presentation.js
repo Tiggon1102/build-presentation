@@ -47,7 +47,7 @@ const generateSlides = async (topic, topics) => {
 	const startSlides = [
 		{
 			id: 0,
-			elements: [{ id: 0, x: 10, y: 0, width: '90%', height: 'auto', value: topic, type: 'headline' }],
+			elements: [{ id: 0, x: 10, y: 0, width: '90%', value: topic, type: 'headline' }],
 		},
 		{
 			id: 1,
@@ -65,9 +65,9 @@ const generateSlides = async (topic, topics) => {
 	const contentSlides = topics.map((topic) => ({
 		id: Number(topic.id) + 2,
 		elements: [
-			{ id: 0, x: 10, y: 0, width: '90%', height: 'auto', value: topic.title, type: 'headline' },
-			{ id: 1, x: 10, y: 80, width: '90%', height: 'auto', value: topic.description, type: 'text' },
-			{ id: 2, x: 10, y: 200, width: '15%', height: 'auto', value: topic.imageUrl, type: 'image' },
+			{ id: 0, x: 10, y: 0, width: '90%', value: topic.title, type: 'headline' },
+			{ id: 1, x: 10, y: 115, width: '90%', value: topic.description, type: 'text' },
+			{ id: 2, x: 10, y: 230, width: '15%', value: topic.imageUrl, type: 'image' },
 		],
 	}));
 	return [...startSlides, ...contentSlides];
