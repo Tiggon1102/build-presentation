@@ -20,9 +20,9 @@
     "husky": "^8.0.2",
     "next": "^13.0.6",
     "prettier": "^2.0.2",
+    "re-resizable": "^6.9.9",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-resize-detector": "^7.1.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "eslint": "8.29.0"
