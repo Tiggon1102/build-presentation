@@ -1,3 +1,5 @@
+import { sendRequest } from './http.js';
+
 const DALLE_API_KEY = process.env.OPENAPI_KEY;
 
 const fetchImageUrl = async (topic) => {
@@ -12,9 +14,16 @@ const fetchImageUrl = async (topic) => {
 		prompt: encodedTopic,
 		size: '512x512',
 	});
-	const response = await fetch(apiUrl, { method: 'POST', headers, body });
-	const data = await response.json();
-	return data.data[0].url;
+
+	const response = await sendRequest({
+		method: 'POST',
+		url: apiUrl,
+		headers,
+		body,
+		returnType: 'json',
+	});
+
+	return response.data[0].url;
 };
 
 export { fetchImageUrl };
