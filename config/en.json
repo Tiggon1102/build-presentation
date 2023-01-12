@@ -12,5 +12,6 @@
     "introduction-text": "This website automatically generates a presentation for a given topic.",
     "introduction-title": "build-my-presentation",
     "results-title": "Results",
-    "presentation-label": "Presentation"
+    "presentation-label": "Presentation",
+    "login-link": "Login"
 }

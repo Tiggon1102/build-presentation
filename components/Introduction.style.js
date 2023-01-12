@@ -8,12 +8,11 @@ const getMyStyle = () => ({
 		fontSize: '2em',
 		fontFamily: template.fonts.main,
 		fontWeight: 'bold',
-		color: template.colors.defaultTheme,
 		textDecoration: 'underline',
 	},
 	image: {
 		height: '400px',
-		marginTop: '30px',
+		marginTop: '-20px',
 	},
 	text: {
 		marginTop: '30px',
