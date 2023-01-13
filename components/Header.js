@@ -9,7 +9,7 @@ const Component = ({ route, texts }) => {
 	return (
 		<div style={style.container} id="footer">
 			<div style={style.leftBar}>
-				<img src="robot.png" alt="robot" style={style.startPageIcon} onClick={() => route('start')} />
+				<img src="logo-transparent.png" alt="robot" style={style.startPageIcon} onClick={() => route('start')} />
 			</div>
 			<div style={style.rightBar}>
 				<a onClick={() => route('login')} style={style.loginLink}>

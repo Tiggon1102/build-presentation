@@ -28,7 +28,7 @@ const getMyStyle = () => ({
 	},
 	startPageIcon: {
 		cursor: 'pointer',
-		height: '60px',
+		height: '80px',
 	},
 	loginLink: {
 		cursor: 'pointer',
