@@ -13,5 +13,8 @@
     "introduction-title": "build-my-presentation",
     "results-title": "Ergebnisse",
     "presentation-label": "Präsentation",
-    "login-link": "Login"
+    "login-link": "Login",
+    "login-button": "Login",
+    "signup-button": "Registrieren",
+    "signup-text": "Noch kein Konto? Registriere dich jetzt!"
 }
