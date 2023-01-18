@@ -27,7 +27,7 @@ const Component = ({ texts, presentation, updateSlide, setCurrentStep }) => {
 				setCurrentSlideIndex={setCurrentSlideIndex}
 				presentationLength={presentation ? presentation.slides.length : 0}
 			/>
-			<Slide currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
+			<Slide currentSlide={currentSlide} currentSlideIndex={currentSlideIndex} setCurrentSlide={setCurrentSlide} />
 			<ElementBacklog texts={texts} />
 		</div>
 	);

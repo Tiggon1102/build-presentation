@@ -12,9 +12,9 @@ const Component = ({ texts }) => {
 		<div style={style.elementBacklog}>
 			<p style={style.title}>Add elements</p>
 			<div style={style.inputFields}>
-				<input type="text" value={loremIpsumText} style={style.input} />
-				<input type="text" value={loremIpsumText} style={style.input} />
-				<input type="text" value={loremIpsumText} style={style.input} />
+				<input type="text" defaultValue={loremIpsumText} style={style.input} />
+				<input type="text" defaultValue={loremIpsumText} style={style.input} />
+				<input type="text" defaultValue={loremIpsumText} style={style.input} />
 			</div>
 			<div style={style.images}>
 				<img

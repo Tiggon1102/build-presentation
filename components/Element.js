@@ -1,60 +1,45 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Resizable } from 're-resizable';
 
-import { getMyStyle } from './Element.style.js';
+import ResizeHandler from './ResizeHandler';
+import { getMyStyle } from './Element.style';
 import useStyle from '../hooks/useStyle';
 import useDragAndDrop from '../hooks/useDragAndDrop';
 import useResize from '../hooks/useResize';
 
-const SouthEastArrow = () => (
-	<svg height="22" width="22">
-		<circle cx="10" cy="10" r="7" stroke="green" stroke-width="3" fill="white" />
-		Sorry, your browser does not support inline SVG.
-	</svg>
-);
-
-const CustomHandle = (props) => (
-	<div
-		style={{
-			background: '#fff',
-			borderRadius: '10px',
-			height: '100%',
-			width: '100%',
-			padding: 0,
-		}}
-		className={'SomeCustomHandle'}
-		{...props}
-	/>
-);
-const BottomRightHandle = () => (
-	<CustomHandle>
-		<SouthEastArrow />
-	</CustomHandle>
-);
-
-const Component = ({ element, updateElement, index }) => {
+const Component = ({ element, updateElement, index, current, setCurrent, currentSlideIndex }) => {
 	const { style } = useStyle(getMyStyle, { element }, [element]);
 
 	const { mouseDown } = useDragAndDrop(element, updateElement, index);
-
 	const { elementRef, resize } = useResize(element, updateElement, index);
 
 	return (
-		<div key={index} ref={elementRef} className="present-img" style={style.elementContainer}>
+		<div key={currentSlideIndex + index} ref={elementRef} className="present-img" style={style.elementContainer}>
 			<Resizable
-				style={{ height: 'auto' }}
+				style={{ width: element.width, height: element.height }}
+				key={currentSlideIndex + index}
 				onResize={resize}
-				enable={{ top: false, left: false, right: false, bottom: false, bottomLeft: true, bottomRight: true, topLeft: true, topRight: true }}
+				enable={{
+					top: false,
+					left: false,
+					right: false,
+					bottom: false,
+					bottomLeft: !(current - index),
+					bottomRight: !(current - index),
+					topLeft: !(current - index),
+					topRight: !(current - index),
+				}}
 				handleComponent={{
-					bottomRight: <BottomRightHandle />,
-					bottomLeft: <BottomRightHandle />,
-					topLeft: <BottomRightHandle />,
-					topRight: <BottomRightHandle />,
+					bottomRight: <ResizeHandler />,
+					bottomLeft: <ResizeHandler />,
+					topLeft: <ResizeHandler />,
+					topRight: <ResizeHandler />,
 				}}
 			>
 				{element.type === 'headline' && (
 					<textarea
-						onMouseDown={(e) => mouseDown(e)}
+						onClick={() => setCurrent(index)}
+						onMouseDown={mouseDown}
 						value={element.value}
 						style={style.headlineElement}
 						onChange={(e) => {
@@ -64,7 +49,8 @@ const Component = ({ element, updateElement, index }) => {
 				)}
 				{element.type === 'text' && (
 					<textarea
-						onMouseDown={(e) => mouseDown(e)}
+						onClick={() => setCurrent(index)}
+						onMouseDown={mouseDown}
 						value={element.value}
 						style={style.textElement}
 						onChange={(e) => {
@@ -72,7 +58,7 @@ const Component = ({ element, updateElement, index }) => {
 						}}
 					/>
 				)}
-				{element.type === 'image' && <img onMouseDown={(e) => mouseDown(e)} src={element.value} style={style.imageElement} />}
+				{element.type === 'image' && <img alt="" onClick={() => setCurrent(index)} onMouseDown={mouseDown} src={element.value} style={style.imageElement} />}
 			</Resizable>
 		</div>
 	);

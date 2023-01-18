@@ -1,19 +1,20 @@
 const hook = (currentSlide, setCurrentSlide, slideRef) => {
 	const addElement = (e) => {
-		setCurrentSlide({
-			...currentSlide,
-			elements: [
-				...currentSlide.elements,
-				{
-					x: e.clientX - slideRef.current.offsetLeft,
-					y: e.clientY - slideRef.current.offsetTop,
-					type: 'text',
-					value: '',
-					width: 400,
-					height: 100,
-				},
-			],
-		});
+		if (e.target.id)
+			setCurrentSlide({
+				...currentSlide,
+				elements: [
+					...currentSlide.elements,
+					{
+						x: e.clientX - slideRef.current.offsetLeft,
+						y: e.clientY - slideRef.current.offsetTop,
+						type: 'text',
+						value: '',
+						width: 400,
+						height: 100,
+					},
+				],
+			});
 	};
 
 	const updateElement = (index, element) => {
