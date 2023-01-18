@@ -1,3 +1,19 @@
 {    
-    "Users": []
+    "Users": [
+        {
+            "_id": {"$oid":"5ead7d9b2d132935907at62u"},
+            "email": "heiko@web.de",
+            "password": "b8g86f86f6zf9r6fr",
+            "premiumUntil": 673576767367536537,
+            "presentations": []
+        }
+    ],
+    "Sessions": [
+        {
+            "_id": {"$oid":"93ghrf43rgh7394rg3wfe"},
+            "userId": "5ead7d9b2d132935907at62u",
+            "expiry": 3494287467962754,
+            "token": "b8g86f86f6zf9r6frg9tg45th54ht9h540ehz956"
+        }
+    ]
 }
