@@ -43,7 +43,7 @@ const fetchImageUrlsForSubTopics = async (topic, topics) => {
 	return topicsWithImageUrls;
 };
 
-const generateSlides = async (topic, topics) => {
+const generateSlides = (topic, topics) => {
 	const startSlides = [
 		{
 			id: 0,
